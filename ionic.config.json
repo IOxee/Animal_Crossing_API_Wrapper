@@ -1,0 +1,7 @@
+{
+  "name": "ACNHRestProject",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
