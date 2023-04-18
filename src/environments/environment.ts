@@ -14,3 +14,37 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+export const API_ACNH = {
+  baseUrl: "http://acnhapi.com/v1",
+  villagersEndpoint: "/villagers",
+  fishEndpoint: "/fish",
+  seaCreaturesEndpoint: "/sea",
+  bugsEndpoint: "/bugs",
+  fossilsEndpoint: "/fossils",
+
+  iconsFishEndpoint: "/icons/fish",
+  iconsBugsEndpoint: "/icons/bugs",
+  iconsVillagersEndpoint: "/icons/villagers",
+  iconsArtEndpoint: "/icons/art",
+
+  imagesFishEndpoint: "/images/fish",
+  imagesBugsEndpoint: "/images/bugs",
+  imagesVillagersEndpoint: "/images/villagers",
+  imagesFossilsEndpoint: "/images/fossils",
+  imagesSongsEndpoint: "/images/songs",
+  imagesFurnitureEndpoint: "/images/furniture",
+
+  songsEndpoint: "/songs",
+  musicEndpoint: "/music",
+  artEndpoint: "/art",
+  hourlyEndpoint: "/hourly",
+  bgmEndpoint: "/backgroundmusic",
+  itemsEndpoint: "/houseware",
+}
+
+// DESCATADO FALTA DE X-API-KEY
+// export const API_NOOKPEDIA = {
+//   baseUrl: "https://api.nookipedia.com",
+//   villagersEndpoint: "/villagers",
+// }

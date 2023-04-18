@@ -1,20 +1,96 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="body">
+    <div class="phone-holder">
+        <div class="phone">
+            <div class="status-bar">
+                <div class="status-icon">
+                    <img class="status-icon-image" src="assets/img/cellular_status.png">
+                </div>
+                <div class="time">
+                    {{ time }}
+                </div>
+                <div class="status-icon">
+                    <img class="status-icon-image" src="assets/img/location_status.png">
+                </div>
+            </div>
+            <div class="title">
+                {{ app_title }}
+            </div>
+            <div class="app-grid">
+                <div id="art" class="app-icon" (mouseenter)="set_title('art')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/art_icon.png">
+                </div>
+                <div id="music" class="app-icon" (mouseenter)="set_title('music')"
+                    (mouseleave)="set_title('nookphone')" (click)="openApp('music')">
+                    <img class="app-icon-image" src="assets/img/music_icon.png">
+                </div>
+                <div id="bugs" class="app-icon" (mouseenter)="set_title('bugs')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/bugs_icon.png">
+                </div>
+                <div id="diy" class="app-icon" (mouseenter)="set_title('diy')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/diy_icon.png">
+                </div>
+                <div id="fish" class="app-icon" (mouseenter)="set_title('fish')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/fish_icon.png">
+                </div>
+                <div id="settings" class="app-icon" (mouseenter)="set_title('settings')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/settings_icon.png">
+                </div>
+                <div id="shop" class="app-icon" (mouseenter)="set_title('shop')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/shopping_icon.png">
+                </div>
+                <div id="villagers" class="app-icon" (mouseenter)="set_title('villagers')"
+                    (mouseleave)="set_title('nookphone')" (click)="openApp('villagers')">
+                    <img class="app-icon-image" src="assets/img/villagers_icon.png">
+                </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+                <div id="calendar" class="app-icon" (mouseenter)="set_title('calendar')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/calendar_icon.png">
+                </div>
+                <div id="camera" class="app-icon" (mouseenter)="set_title('camera')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/camera_icon.png">
+                </div>
+                <div id="chat" class="app-icon" (mouseenter)="set_title('chat')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/chat_icon.png">
+                </div>
+                <div id="clock" class="app-icon" (mouseenter)="set_title('clock')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/clock_icon.png">
+                </div>
+                <div id="design" class="app-icon" (mouseenter)="set_title('design')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/design_icon.png">
+                </div>
+                <div id="help" class="app-icon" (mouseenter)="set_title('help')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/help_icon.png">
+                </div>
+                <div id="mail" class="app-icon" (mouseenter)="set_title('mail')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/mail_icon.png">
+                </div>
+                <div id="map" class="app-icon" (mouseenter)="set_title('map')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/map_icon.png">
+                </div>
+                <div id="nook_miles" class="app-icon" (mouseenter)="set_title('nook_miles')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/nook_miles_icon.png">
+                </div>
+                <div id="okmotors" class="app-icon" (mouseenter)="set_title('okmotors')" (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/okmotors_icon.png">
+                </div>
+                <div id="passport" class="app-icon" (mouseenter)="set_title('passport')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/passport_icon.png">
+                </div>
+                <div id="terraform" class="app-icon" (mouseenter)="set_title('terraform')"
+                    (mouseleave)="set_title('nookphone')">
+                    <img class="app-icon-image" src="assets/img/undownloaded/terraform_icon.png">
+                </div>
+            </div>
+            <div class="home-button">
+                <ion-icon name="stop-circle-outline" class="home-button__home_icon"></ion-icon>
+            </div>
+        </div>
+    </div>
+</div>

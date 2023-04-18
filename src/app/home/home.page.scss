@@ -1,27 +1,113 @@
-#container {
-  text-align: center;
+$color_1: #E0DACA;
+$color_2: #807256;
+$font-family_1: "Varela Round", sans-serif;
+$background-color_1: black;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
+.body {
+  height: 100%;
   margin: 0;
+  background: url('../../assets/img/backgrounds/polka-pattern.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#container a {
-  text-decoration: none;
+.phone-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.phone {
+  width: 600px;
+  height: 800px;
+  background: #fdf8e3;
+  border-radius: 110px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.home-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__home_icon {
+        font-size: 40px;
+        color: #807256;
+    }
+}
+
+.status-bar {
+  height: 30px;
+  margin-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: $font-family_1;
+  font-size: 22px;
+  font-weight: bold;
+  color: $color_1;
+}
+
+.status-icon {
+  width: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.status-icon-image {
+  height: 22px;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.title {
+  text-align: center;
+  color: $color_2;
+  font-family: $font-family_1;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.app-grid {
+  height: 340px;
+  margin-top: 25px;
+  margin-left: 45px;
+  margin-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.app-icon {
+  width: 98px;
+  height: 98px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.app-icon-image {
+  width: 98px;
+  height: 98px;
+  transition: transform .15s;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 }

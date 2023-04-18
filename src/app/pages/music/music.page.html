@@ -1,0 +1,63 @@
+<div class="body">
+    <div class="phone-holder">
+        <div class="phone">
+            <div class="status-bar">
+                <div class="status-icon">
+                    <img class="status-icon-image" src="assets/img/cellular_status.png">
+                </div>
+                <div class="time">
+                    {{ time }}
+                </div>
+                <div class="status-icon">
+                    <img class="status-icon-image" src="assets/img/location_status.png">
+                </div>
+            </div>
+            <div class="title">
+                {{ musicName }}
+            </div>
+            <div *ngIf="musicSelected != true">
+                <div class="app-grid">
+                    <div class="search-bar">
+                        <i class="search-bar__icon bi bi-search"></i>
+                        <input class="search-bar__input" id="villagers_seachbar" type="text" placeholder="Search"
+                            (input)="searchMusic()">
+                        <button class="search-bar__button">Search</button>
+                    </div>
+                    <!-- Villagers list -->
+                    <div class="villagers-list">
+                        <div class="villager" *ngFor="let villager of musicIcons">
+                            <div (click)="showContentByCode(villager)">
+                                <div class="villager__image">
+                                    <img class="villager__image__img" src="{{ villager.image_uri }}">
+                                </div>
+                                <div class="villager__name">
+                                    {{ villager.name['name-USen'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="musicSelected == true">
+                <div class="music_content">
+                    <div class="music_content__image">
+                        <img class="music_content__image__img" src="{{ musicSelectedData.image_uri }}">
+                    </div>
+                    <div class="music_content__name">
+                        {{ musicSelectedData.name['name-USen'] }}
+                    </div>
+                    <div class="music_content__artist">🐶 Totakeke</div>
+                    <div class="music_content__audio">
+                        <audio controls class="music_audio">
+                            <source src="{{ musicSelectedData.music_uri }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <div class="home-button" (click)="goBack()">
+                <ion-icon name="stop-circle-outline" class="home-button__home_icon"></ion-icon>
+            </div>
+        </div>
+    </div>
+</div>
