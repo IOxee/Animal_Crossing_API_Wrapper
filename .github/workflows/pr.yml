@@ -1,0 +1,31 @@
+name: Re-create PRs under my name
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  recreate-pr:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Close Dependabot PR
+        uses: peter-evans/close-pull@v1
+        with:
+          pull_request_number: ${{ github.event.pull_request.number }}
+          comment: "Closing this PR to recreate it under my name."
+
+      - name: Create new PR under my name
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.TOKEN }}
+          commit-message: "Recreated PR from Dependabot changes"
+          title: "Updated dependencies"
+          body: "This PR updates dependencies as per Dependabot's changes."
+          branch: "recreated-${{ github.event.pull_request.head.ref }}"
