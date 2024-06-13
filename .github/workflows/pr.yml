@@ -1,4 +1,4 @@
-name: Re-create PRs under my name
+name: Pull Requests
 
 on:
   pull_request:
@@ -21,14 +21,15 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
-          comment: "Closing this PR to recreate it under my name."
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new PR under my name
         uses: peter-evans/create-pull-request@v3
+        env:
+          COMMIT_MESSAGE: ${{ github.event.pull_request.title }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Recreated PR from Dependabot changes"
-          title: "Updated dependencies"
-          body: "This PR updates dependencies as per Dependabot's changes."
+          commit-message: ${{ env.COMMIT_MESSAGE }}
+          title: ${{ github.event.pull_request.title }}
+          body: ${{ github.event.pull_request.body }}
           branch: "recreated-${{ github.event.pull_request.head.ref }}"
