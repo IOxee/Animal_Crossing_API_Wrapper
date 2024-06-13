@@ -30,7 +30,16 @@ jobs:
           git checkout -b new-branch-for-pr ${{ github.event.pull_request.head.ref }}
 
       - name: Push new branch
-        run: git push origin new-branch-for-pr
+        run: |
+          git config --global user.name 'IO'
+          git config --global user.email '48241519+IOxee@users.noreply.github.com'
+          git push origin "${{ github.event.pull_request.title }}"
+        env:
+          GIT_AUTHOR_NAME: Your Name
+          GIT_AUTHOR_EMAIL: your.email@example.com
+          GIT_COMMITTER_NAME: Your Name
+          GIT_COMMITTER_EMAIL: your.email@example.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new PR under my name
         run: |
