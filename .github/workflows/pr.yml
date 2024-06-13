@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  recreate-pr:
+  create-pr:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     steps:
@@ -24,15 +24,22 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Close Dependabot PR
-        if: github.event_name == 'pull_request'
-        run: gh pr close ${{ github.event.pull_request.number }} --delete-branch
+      - name: Create a new branch from Dependabot's changes
+        run: |
+          git fetch origin ${{ github.event.pull_request.head.ref }}
+          git checkout -b new-branch-for-pr ${{ github.event.pull_request.head.ref }}
+
+      - name: Push new branch
+        run: git push origin new-branch-for-pr
 
       - name: Create new PR under my name
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ${{ github.event.pull_request.title }}
-          title: ${{ github.event.pull_request.title }}
-          body: ${{ github.event.pull_request.body }}
-          branch: "recreated-${{ github.event.pull_request.head.ref }}"
+        run: |
+          gh pr create --title "${{ github.event.pull_request.title }}" --body "${{ github.event.pull_request.body }}" --head new-branch-for-pr --base ${{ github.event.pull_request.base.ref }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Close old Dependabot PR
+        if: github.event_name == 'pull_request'
+        run: gh pr close ${{ github.event.pull_request.number }} --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
