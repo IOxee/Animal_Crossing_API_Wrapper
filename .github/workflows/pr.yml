@@ -3,11 +3,12 @@ name: Re-create PRs under my name
 on:
   pull_request:
     types: [opened, reopened, synchronize]
+  workflow_dispatch:
 
 jobs:
   recreate-pr:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -17,9 +18,11 @@ jobs:
 
       - name: Close Dependabot PR
         uses: peter-evans/close-pull@v1
+        if: github.event_name == 'pull_request'
         with:
-          pull_request_number: ${{ github.event.pull_request.number }}
+          pull-request-number: ${{ github.event.pull_request.number }}
           comment: "Closing this PR to recreate it under my name."
+          token: ${{ secrets.TOKEN }}
 
       - name: Create new PR under my name
         uses: peter-evans/create-pull-request@v3
