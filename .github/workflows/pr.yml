@@ -22,12 +22,12 @@ jobs:
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
           comment: "Closing this PR to recreate it under my name."
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new PR under my name
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Recreated PR from Dependabot changes"
           title: "Updated dependencies"
           body: "This PR updates dependencies as per Dependabot's changes."
